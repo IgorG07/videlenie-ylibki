@@ -1,0 +1,16 @@
+import cv2
+
+cap = cv2.VideoCapture(0)
+smail = cv2.CascadeClassifier('smile.xml')
+
+while True:
+
+    a, img = cap.read()
+    results = smail.detectMultiScale(img, scaleFactor= 2, minNeighbors= 30)
+    # for (x, y, w, h) in results:
+    #     cv2.rectangle(img, (x, y), (x+w, y+h), (0,0,255), thickness= 3)
+
+    cv2.imshow("Results", img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
